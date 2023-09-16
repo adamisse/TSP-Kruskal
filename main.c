@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 // Defina a estrutura de dados para representar uma cidade
 typedef struct {
@@ -63,7 +64,7 @@ void unionSets(DisjointSet *set, int element1, int element2) {
 }
 
 int main() {
-    FILE *file = fopen("in/berlin52.tsp", "r");
+    FILE *file = fopen("berlin52.tsp", "r");
     if (file == NULL) {
         printf("Erro ao abrir o arquivo de entrada.\n");
         return 1;
