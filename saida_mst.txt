@@ -1,52 +1,56 @@
-Aresta entre Cidade 35 e Cidade 36: dist=15.00
-Aresta entre Cidade 24 e Cidade 48: dist=15.81
-Aresta entre Cidade 34 e Cidade 35: dist=21.21
-Aresta entre Cidade 5 e Cidade 15: dist=25.00
-Aresta entre Cidade 5 e Cidade 24: dist=31.62
-Aresta entre Cidade 5 e Cidade 6: dist=35.36
-Aresta entre Cidade 20 e Cidade 50: dist=35.36
-Aresta entre Cidade 38 e Cidade 40: dist=35.36
-Aresta entre Cidade 37 e Cidade 40: dist=41.23
-Aresta entre Cidade 39 e Cidade 40: dist=42.72
-Aresta entre Cidade 36 e Cidade 39: dist=43.01
-Aresta entre Cidade 24 e Cidade 38: dist=44.72
-Aresta entre Cidade 2 e Cidade 7: dist=45.00
-Aresta entre Cidade 1 e Cidade 22: dist=46.10
-Aresta entre Cidade 32 e Cidade 49: dist=50.00
-Aresta entre Cidade 1 e Cidade 49: dist=64.03
-Aresta entre Cidade 8 e Cidade 41: dist=64.03
-Aresta entre Cidade 4 e Cidade 6: dist=69.64
-Aresta entre Cidade 19 e Cidade 45: dist=75.00
-Aresta entre Cidade 7 e Cidade 42: dist=76.16
-Aresta entre Cidade 34 e Cidade 44: dist=80.00
-Aresta entre Cidade 18 e Cidade 31: dist=80.16
-Aresta entre Cidade 36 e Cidade 49: dist=81.39
-Aresta entre Cidade 9 e Cidade 10: dist=83.22
-Aresta entre Cidade 19 e Cidade 41: dist=91.92
-Aresta entre Cidade 20 e Cidade 23: dist=94.34
-Aresta entre Cidade 22 e Cidade 31: dist=104.40
-Aresta entre Cidade 4 e Cidade 25: dist=109.20
-Aresta entre Cidade 27 e Cidade 28: dist=110.11
-Aresta entre Cidade 46 e Cidade 48: dist=125.00
-Aresta entre Cidade 26 e Cidade 27: dist=126.19
-Aresta entre Cidade 16 e Cidade 50: dist=130.38
-Aresta entre Cidade 16 e Cidade 44: dist=132.38
-Aresta entre Cidade 3 e Cidade 18: dist=134.63
-Aresta entre Cidade 21 e Cidade 31: dist=150.00
-Aresta entre Cidade 32 e Cidade 45: dist=151.33
-Aresta entre Cidade 23 e Cidade 30: dist=179.23
-Aresta entre Cidade 8 e Cidade 10: dist=180.35
-Aresta entre Cidade 12 e Cidade 28: dist=182.48
-Aresta entre Cidade 13 e Cidade 27: dist=185.07
-Aresta entre Cidade 26 e Cidade 47: dist=185.54
-Aresta entre Cidade 12 e Cidade 51: dist=188.22
-Aresta entre Cidade 29 e Cidade 50: dist=191.38
-Aresta entre Cidade 13 e Cidade 14: dist=205.55
-Aresta entre Cidade 3 e Cidade 17: dist=217.31
-Aresta entre Cidade 15 e Cidade 43: dist=241.87
-Aresta entre Cidade 12 e Cidade 25: dist=245.00
-Aresta entre Cidade 13 e Cidade 52: dist=278.66
-Aresta entre Cidade 11 e Cidade 51: dist=285.04
-Aresta entre Cidade 33 e Cidade 43: dist=365.00
-
+NAME: berlin52
+TYPE: MST
+DIMENSION: 52
+MST_SECTION
+35 36
+24 48
+34 35
+5 15
+5 24
+5 6
+20 50
+38 40
+37 40
+39 40
+36 39
+24 38
+2 7
+1 22
+32 49
+1 49
+8 41
+4 6
+19 45
+7 42
+34 44
+18 31
+36 49
+9 10
+19 41
+20 23
+22 31
+4 25
+27 28
+46 48
+26 27
+16 50
+16 44
+3 18
+21 31
+32 45
+23 30
+8 10
+12 28
+13 27
+26 47
+12 51
+29 50
+13 14
+3 17
+15 43
+12 25
+13 52
+11 51
+33 43
+EOF
 Custo total da Árvore Geradora Mínima: 5791.72

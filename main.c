@@ -116,6 +116,12 @@ int main() {
         return 1;
     }
 
+    // Escreva os cabeçalhos no arquivo de saída
+    fprintf(outputFile, "NAME: berlin52\n");
+    fprintf(outputFile, "TYPE: MST\n");
+    fprintf(outputFile, "DIMENSION: %d\n", dimension);
+    fprintf(outputFile, "MST_SECTION\n");
+
     // Encontre a árvore geradora mínima usando o algoritmo de Kruskal
     for (int i = 0; i < edgeCount; i++) {
         int city1 = edges[i].city1;
@@ -125,7 +131,7 @@ int main() {
 
         // Verifique se adicionar esta aresta não criará um ciclo
         if (root1 != root2) {
-            fprintf(outputFile, "Aresta entre Cidade %d e Cidade %d: dist=%.2lf\n", city1, city2, edges[i].distance);
+            fprintf(outputFile, "%d %d\n", city1, city2);
             totalCost += edges[i].distance;
             unionSets(set, root1, root2);
             edgesInTree++;
@@ -138,7 +144,7 @@ int main() {
     }
 
     // Escreva o custo total da árvore geradora mínima no arquivo de saída
-    fprintf(outputFile, "\nCusto total da Árvore Geradora Mínima: %.2lf\n", totalCost);
+    fprintf(outputFile, "EOF\nCusto total da Árvore Geradora Mínima: %.2lf\n", totalCost);
 
     fclose(file);
     fclose(outputFile);
