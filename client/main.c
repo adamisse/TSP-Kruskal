@@ -6,6 +6,10 @@
 
 int main(int argc, char** argv) {
   FILE *file = fopen(argv[1], "r");
+
+  char *fileName = argv[1];
+  strtok(fileName, ".");
+
   if (file == NULL) {
     printf("Erro ao abrir o arquivo de entrada.\n");
     return 1;
@@ -36,7 +40,17 @@ int main(int argc, char** argv) {
     if(strcmp(line, "EOF") && strcmp(line, "EOF\n")){
       if(strstr(line, "NODE_COORD_SECTION")) {
         for(int i = 0; i < dimension; i++) {
-          fscanf(file, "%d %lf %lf", &cities[i].id, &cities[i].x, &cities[i].y);
+          char numStr[100];
+          fscanf(file, "%d %s", &cities[i].id, numStr, numStr);
+          cities[i].x = strtod(numStr, NULL);
+
+
+          fscanf(file, " %s", numStr);
+          cities[i].y = strtod(numStr, NULL);
+
+          printf("%lf\n", cities[i].y);
+
+          //fscanf(file, "%d %lf %lf", &cities[i].id, &cities[i].x, &cities[i].y);
         }
       }     
     }
@@ -83,14 +97,19 @@ int main(int argc, char** argv) {
 
   // Crie um arquivo de saída para armazenar as arestas da árvore geradora
   // mínima
-  FILE *outputFile = fopen("berlin52.mst", "w");
+
+  char mstFileName[100];
+  strcpy(mstFileName, fileName);
+  strcat(mstFileName, ".mst");
+
+  FILE *outputFile = fopen(mstFileName, "w");
   if (outputFile == NULL) {
     printf("Erro ao criar o arquivo de saída.\n");
     return 1;
   }
 
   // Escreva os cabeçalhos no arquivo de saída
-  printMstHeader(outputFile, dimension);
+  printMstHeader(outputFile, fileName, dimension);
 
   // Encontre a árvore geradora mínima usando o algoritmo de Kruskal
   for (int i = 0; i < edgeCount; i++) {
@@ -126,13 +145,17 @@ int main(int argc, char** argv) {
     visited[i] = 0;
   }
 
-  FILE *tourFile = fopen("berlin52.tour", "w");
+  char tourFileName[100];
+  strcpy(tourFileName, fileName);
+  strcat(tourFileName, ".tour");
+
+  FILE *tourFile = fopen(tourFileName, "w");
   if (tourFile == NULL) {
     printf("Erro ao criar o arquivo de saída.\n");
     return 1;
   }
 
-  printTourHeader(tourFile);
+  printTourHeader(tourFile, fileName, dimension);
   DFS(graph, visited, 0, dimension, tourFile);
   fprintf(tourFile, "EOF\n");
   fclose(tourFile);

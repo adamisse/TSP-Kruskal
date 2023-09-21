@@ -20,10 +20,10 @@ int compareEdges(const void *a, const void *b);
 
 void sort(Edge *edges, int edgeCount);
 
-void DFS(double **graph, int *visited, int vertex, int dimension, FILE* tourFIle);
+void DFS(double **graph, int *visited, int vertex, int dimension,
+         FILE *tourFIle);
 
-void printMstHeader(FILE* arq, int dimension);
-
-void printTourHeader(FILE* arq);
+void printMstHeader(FILE *arq, char *fileName, int dimension);
+void printTourHeader(FILE *arq, char *fileName, int dimension);
 
 #endif
