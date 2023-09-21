@@ -1,0 +1,9 @@
+.cache/
+.ccls-cache/
+obj/
+
+*.tsp
+*.mst
+*.tour
+*.bin
+*.o
