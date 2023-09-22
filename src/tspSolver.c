@@ -113,7 +113,7 @@ void GenerateMST(Vertex *vertices, char* inputFileName, int dimension) {
   clock_t endTime = clock();
   double executionTime = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 
-  printf("Generate MST execution time: %.4f seconds\n", executionTime);
+  //printf("Generate MST execution time: %.4f seconds\n", executionTime);
 }
 
 // Função para gerar o tour a partir da MST e escrevê-lo em um arquivo.
@@ -169,5 +169,5 @@ void GenerateTour(Vertex* vertices, char* inputFileName, int dimension) {
   clock_t endTime = clock();
   double executionTime = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 
-  printf("GenerateTour execution time: %.4f seconds\n", executionTime);
+  //printf("GenerateTour execution time: %.4f seconds\n", executionTime);
 }
