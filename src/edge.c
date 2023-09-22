@@ -2,14 +2,40 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int compareEdges(const void *a, const void *b) {
-  if ((*(Edge *)a).distance < (*(Edge *)b).distance)
-    return -1;
-  if ((*(Edge *)a).distance > (*(Edge *)b).distance)
-    return 1;
-  return 0;
+// Função de particionamento para o QuickSort
+int partition(Edge *edges, int lo, int hi) {
+    Edge pivot = edges[hi];
+    int i = lo - 1;
+
+    for (int j = lo; j < hi; j++) {
+        if (edges[j].distance < pivot.distance) {
+            i++;
+            // Troca as arestas
+            Edge temp = edges[i];
+            edges[i] = edges[j];
+            edges[j] = temp;
+        }
+    }
+
+    // Troca o pivô
+    Edge temp = edges[i + 1];
+    edges[i + 1] = edges[hi];
+    edges[hi] = temp;
+
+    return i + 1;
 }
 
+// Função QuickSort para ordenar as arestas
+void edgeCustomQuickSort(Edge *edges, int lo, int hi) {
+    if (lo < hi) {
+        int j = partition(edges, lo, hi);
+        edgeCustomQuickSort(edges, lo, j - 1);
+        edgeCustomQuickSort(edges, j + 1, hi);
+    }
+}
+
+// Função para chamar o QuickSort e ordenar as arestas
 void sort(Edge *edges, int edgeCount) {
-  qsort(edges, edgeCount, sizeof(Edge), compareEdges);
+    // Chame o QuickSort para ordenar as arestas
+    edgeCustomQuickSort(edges, 0, edgeCount - 1);
 }
