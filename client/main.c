@@ -1,5 +1,6 @@
 #include "../include/unionFind.h"
 #include "../include/vertex.h"
+#include "../include/edge.h"
 #include "../include/graph.h"
 #include "../include/fileHelpers.h"
 
@@ -9,53 +10,21 @@
 #include <string.h>
 
 int main(int argc, char** argv) {
-  FILE *file = fopen(argv[1], "r");
+  FILE *inputFile = fopen(argv[1], "r");
 
   char *fileName = argv[1];
   strtok(fileName, ".");
 
-  if (file == NULL) {
+  if (inputFile == NULL) {
     printf("Erro ao abrir o arquivo de entrada.\n");
     return 1;
   }
 
-  char *line = NULL;
-  size_t len = 0;
-  ssize_t read;
-  int dimension;
+  int dimension = calculateDimension(inputFile);
+  int maxEdges = calculateMaxEdges(dimension);
 
-  // Ler e analisar as informações do arquivo de entrada
-  while ((read = getline(&line, &len, file)) != EOF) {
-    if (strstr(line, "DIMENSION:")) {
-      sscanf(line, "DIMENSION: %d", &dimension);
-      break;
-    }
-  }
-
-  int maxEdges;
-
-  maxEdges = ((dimension + 1)*dimension)/2;
-
-  Vertex *cities = malloc(dimension * sizeof(Vertex));
+  Vertex *vertices = StoreVerticesFromInputFile(inputFile, dimension);
   Edge *edges = malloc(maxEdges * sizeof(Edge));
-
-  while ((read = getline(&line, &len, file)) != EOF) {
-    if(strcmp(line, "EOF") && strcmp(line, "EOF\n")){
-      if(strstr(line, "NODE_COORD_SECTION")) {
-        for(int i = 0; i < dimension; i++) {
-          char numStr[100];
-          fscanf(file, "%d %s", &cities[i].id, numStr);
-          cities[i].x = strtod(numStr, NULL);
-          //printf("X: %Lf ", cities[i].x);
-
-          fscanf(file, " %s", numStr);
-
-          cities[i].y = strtod(numStr, NULL);
-          //printf("Y: %Lf \n", cities[i].y);
-        }
-      }     
-    }
-  }
 
   double** graph = initializeGraph(dimension);
 
@@ -65,7 +34,7 @@ int main(int argc, char** argv) {
         graph[i][j] = 9999;
       }
       else{
-        graph[i][j] = calculateDistance(cities[i], cities[j]);
+        graph[i][j] = calculateDistanceBetweenVertices(vertices[i], vertices[j]);
       }
     }
   }
@@ -75,10 +44,10 @@ int main(int argc, char** argv) {
 
   for (int i = 0; i < dimension - 1; i++) {
     for (int j = i + 1; j < dimension; j++) {      
-      edges[edgeCount].city1 = cities[i].id;
-      edges[edgeCount].city2 = cities[j].id;
+      edges[edgeCount].city1 = vertices[i].id;
+      edges[edgeCount].city2 = vertices[j].id;
 
-      double distance = calculateDistance(cities[i], cities[j]);
+      double distance = calculateDistanceBetweenVertices(vertices[i], vertices[j]);
       edges[edgeCount].distance = distance;
       
       edgeCount++;
@@ -142,12 +111,9 @@ int main(int argc, char** argv) {
   }
 
   fprintf(outputFile, "EOF\n");
-  //printf("Custo total da Árvore Geradora Mínima: %.2lf\n", totalCost);
 
-  fclose(file);
+  fclose(inputFile);
   fclose(outputFile);
-
-  //printf("Arquivo de saída 'saida_mst.txt' gerado com sucesso.\n");
 
   int *visited = malloc(sizeof(int) * dimension);
   for(int i = 0; i < dimension; i++){
