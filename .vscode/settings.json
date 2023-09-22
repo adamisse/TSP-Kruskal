@@ -8,6 +8,7 @@
         "vertex.h": "c",
         "graph.h": "c",
         "unionfind.h": "c",
-        "filehelpers.h": "c"
+        "filehelpers.h": "c",
+        "tspsolver.h": "c"
     }
 }
