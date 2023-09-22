@@ -9,11 +9,11 @@ double calculateDistance(City city1, City city2);
 
 double **initializeGraph(int size);
 
-int ufFind(int i, int Id[]);
+int ufFind(int i, int Id[], int dimension);
 
 void ufInit(int size, int Id[]);
 
-void ufUnion(int p, int q, int Id[]);
+void ufUnion(int p, int q, int Id[], int dimension);
 
 // Função de comparação para ordenar as arestas pelo comprimento (distância)
 int compareEdges(const void *a, const void *b);

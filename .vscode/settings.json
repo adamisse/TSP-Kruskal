@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "edge.h": "c",
+        "uf.h": "c",
+        "fileoperations.h": "c",
+        "city.h": "c"
+    }
+}
