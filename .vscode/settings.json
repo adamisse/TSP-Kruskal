@@ -1,8 +1,13 @@
 {
+    "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "edge.h": "c",
         "uf.h": "c",
         "fileoperations.h": "c",
-        "city.h": "c"
+        "city.h": "c",
+        "vertex.h": "c",
+        "graph.h": "c",
+        "unionfind.h": "c",
+        "filehelpers.h": "c"
     }
 }

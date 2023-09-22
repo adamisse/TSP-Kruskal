@@ -1,4 +1,8 @@
-#include "../include/functions.h"
+#include "../include/unionFind.h"
+#include "../include/vertex.h"
+#include "../include/graph.h"
+#include "../include/fileHelpers.h"
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,7 +36,7 @@ int main(int argc, char** argv) {
 
   maxEdges = ((dimension + 1)*dimension)/2;
 
-  City *cities = malloc(dimension * sizeof(City));
+  Vertex *cities = malloc(dimension * sizeof(Vertex));
   Edge *edges = malloc(maxEdges * sizeof(Edge));
 
   while ((read = getline(&line, &len, file)) != EOF) {
