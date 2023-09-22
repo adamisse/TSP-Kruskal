@@ -16,7 +16,12 @@ int calculateDimension(FILE *file) {
       sscanf(line, "DIMENSION: %d", &dimension);
       break;
     }
+
+    free(line);
+    line = NULL;
   }
+
+  free(line);
 
   return dimension;
 }

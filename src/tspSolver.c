@@ -20,6 +20,8 @@ void SolveTSP(char* inputFileName){
 
   GenerateMST(vertices, inputFileName, dimension);
   GenerateTour(vertices, inputFileName, dimension);
+
+  free(vertices);
 }
 
 void GenerateMST(Vertex *vertices, char* inputFileName, int dimension){
@@ -57,14 +59,14 @@ void GenerateMST(Vertex *vertices, char* inputFileName, int dimension){
   strcpy(mstFileName, inputFileName);
   strcat(mstFileName, ".mst");
 
-  FILE *outputFile = fopen(mstFileName, "w");
-  if (outputFile == NULL) {
+  FILE *mstFile = fopen(mstFileName, "w");
+  if (mstFile == NULL) {
     printf("Error creating file.");
     return;
   }
 
   // Escreva os cabeçalhos no arquivo de saída
-  printMstHeader(outputFile, inputFileName, dimension);
+  printMstHeader(mstFile, inputFileName, dimension);
   
   // Encontre a árvore geradora mínima usando o algoritmo de Kruskal
   for (int i = 0; i < edgeCount; i++) {
@@ -76,7 +78,7 @@ void GenerateMST(Vertex *vertices, char* inputFileName, int dimension){
 
     // Verifique se adicionar esta aresta não criará um ciclo
     if (root1 != root2) {
-      fprintf(outputFile, "%d %d\n", city1, city2);
+      fprintf(mstFile, "%d %d\n", city1, city2);
       ufUnion(city1, city2, id, dimension);
       edgesInTree++;
 
@@ -87,8 +89,11 @@ void GenerateMST(Vertex *vertices, char* inputFileName, int dimension){
     }
   }
 
-  fprintf(outputFile, "EOF\n");
-  fclose(outputFile);
+  free(edges);
+
+  fprintf(mstFile, "EOF\n");
+  fclose(mstFile);
+
 }
 
 void GenerateTour(Vertex* vertices, char* inputFileName, int dimension){  
@@ -123,6 +128,9 @@ void GenerateTour(Vertex* vertices, char* inputFileName, int dimension){
   }
 
   DFS(graph, visited, 0, dimension, tourFile);
+  
+  freeGraph(graph, dimension);
+  free(visited);
 
   fprintf(tourFile, "EOF\n");
   fclose(tourFile);

@@ -10,7 +10,6 @@ double **initializeGraph(int size) {
   return graph;
 }
 
-
 void DFS(double **graph, int *visited, int vertex, int dimension, FILE *arq) {
   fprintf(arq, "%d\n", vertex + 1);
   visited[vertex] = 1;
@@ -22,6 +21,15 @@ void DFS(double **graph, int *visited, int vertex, int dimension, FILE *arq) {
       closestCity = j;
     }
   }
-  if (smallest != 9999)
+  if (smallest != 9999){
     DFS(graph, visited, closestCity, dimension, arq);
+  }
+}
+
+void freeGraph(double **graph, int size) {
+  for (int i = 0; i < size; i++) {
+    free(graph[i]);
+  }
+  
+  free(graph);
 }

@@ -35,7 +35,12 @@ Vertex* StoreVerticesFromInputFile(FILE* inputFile, int dimension){
           cities[i].y = strtod(numStr, NULL);
         }
       }     
+
+      free(line);
+      line = NULL;
     }
+
+    free(line);
   }
 
   return cities;

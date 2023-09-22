@@ -5,5 +5,6 @@
 
 double **initializeGraph(int size);
 void DFS(double **graph, int *visited, int vertex, int dimension, FILE *tourFIle);
+void freeGraph(double **graph, int size);
 
 #endif
