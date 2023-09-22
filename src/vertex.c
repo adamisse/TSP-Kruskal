@@ -4,8 +4,6 @@
 #include <string.h>
 #include <math.h>
 
-// Define a estrutura de dados para representar uma cidade
-
 double calculateDistanceBetweenVertices(Vertex city1, Vertex city2) {
   double dx = city1.x - city2.x;
   double dy = city1.y - city2.y;

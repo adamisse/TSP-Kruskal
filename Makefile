@@ -7,6 +7,7 @@ INCLUDEDIR := include/
 INCLUDE_PATHS := -Iinclude
 CLI := client/main.c
 CC := gcc
+CFLAGS += -Wunused-result
 
 all: $(TARGET)
 

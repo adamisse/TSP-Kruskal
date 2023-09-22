@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Função de particionamento para o QuickSort
+// Função auxiliar para realizar a partição durante a ordenação personalizada das arestas (QuickSort personalizado).
 int partition(Edge *edges, int lo, int hi) {
     Edge pivot = edges[hi];
     int i = lo - 1;
@@ -17,7 +17,7 @@ int partition(Edge *edges, int lo, int hi) {
         }
     }
 
-    // Troca o pivô
+    // Troca a posição da aresta pivot
     Edge temp = edges[i + 1];
     edges[i + 1] = edges[hi];
     edges[hi] = temp;
@@ -25,7 +25,7 @@ int partition(Edge *edges, int lo, int hi) {
     return i + 1;
 }
 
-// Função QuickSort para ordenar as arestas
+// Função para realizar a ordenação personalizada das arestas (QuickSort personalizado).
 void edgeCustomQuickSort(Edge *edges, int lo, int hi) {
     if (lo < hi) {
         int j = partition(edges, lo, hi);
@@ -34,8 +34,7 @@ void edgeCustomQuickSort(Edge *edges, int lo, int hi) {
     }
 }
 
-// Função para chamar o QuickSort e ordenar as arestas
+// Função para ordenar um array de arestas com base na distância entre as cidades.
 void sort(Edge *edges, int edgeCount) {
-    // Chame o QuickSort para ordenar as arestas
     edgeCustomQuickSort(edges, 0, edgeCount - 1);
 }

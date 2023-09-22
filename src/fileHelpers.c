@@ -11,6 +11,7 @@ int calculateDimension(FILE *file) {
   size_t len = 0;
   ssize_t read;
 
+  // Lê o arquivo linha por linha até encontrar a linha que contém "DIMENSION:".
   while ((read = getline(&line, &len, file)) != EOF) {
     if (strstr(line, "DIMENSION:")) {
       sscanf(line, "DIMENSION: %d", &dimension);
